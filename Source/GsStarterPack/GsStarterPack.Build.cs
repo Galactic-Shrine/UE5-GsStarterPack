@@ -9,7 +9,7 @@ using UnrealBuildTool;
 
 public class GsStarterPack: ModuleRules {
 
-	public GsStarterPack(ReadOnlyTargetRules Target): base(Target) {
+  public GsStarterPack(ReadOnlyTargetRules Target): base(Target) {
 
     /**
      * Module rules
@@ -20,27 +20,29 @@ public class GsStarterPack: ModuleRules {
      * Include paths
      * 
      * <example>
-     * 	Public Paths
-     * 	<code>
-      	PublicIncludePaths.AddRange(new string[] {
+     *  Public Paths
+     *  <code>
+        PublicIncludePaths.AddRange(new string[] {
 
-    			"Public" Or Path.Combine(ModuleDirectory, "Public")
-    		});
-     * 	</code>
+          "Public" Or Path.Combine(ModuleDirectory, "Public")
+        });
+     *  </code>
      * 
-     * 	Private Paths
-     * 	<code>
-      	PrivateIncludePaths.AddRange(new string[] {
+     *  Private Paths
+     *  <code>
+        PrivateIncludePaths.AddRange(new string[] {
 
-    			"Private" Or Path.Combine(ModuleDirectory, "Private")
-    		});
-     * 	</code>
+          "Private" Or Path.Combine(ModuleDirectory, "Private")
+        });
+     *  </code>
      * </example>
      * 
      **/
     PublicIncludePaths.AddRange(new string[] {
-
+      "GsStarterPack"
+      // Path.Combine(ModuleDirectory, "Public")
     });
+
 
     PublicDependencyModuleNames.AddRange(new string[] {
 
@@ -48,9 +50,9 @@ public class GsStarterPack: ModuleRules {
       "CoreUObject",
       "Engine",
       "InputCore",
-			"HeadMountedDisplay",
-			"UMG",
-			"UnrealEd"
+      "HeadMountedDisplay",
+      "UMG",
+      "UnrealEd"
     });
 
     PrivateDependencyModuleNames.AddRange(new string[] {
@@ -59,79 +61,79 @@ public class GsStarterPack: ModuleRules {
       "CoreUObject",
       "Engine",
       "InputCore",
-			"Slate",
-			"SlateCore",
-			"EngineSettings",
-			"UnrealEd"
+      "Slate",
+      "SlateCore",
+      "EngineSettings",
+      "UnrealEd"
     });
 
     DynamicallyLoadedModuleNames.AddRange(new string[] {
 
     });
 
-		IncreaseBuild(Target);
-	}
+    IncreaseBuild(Target);
+  }
 
-	/**
-	 * Function that increments the construction number at each compilation
-	 **/
-	private void IncreaseBuild(ReadOnlyTargetRules Target) {
+  /**
+   * Function that increments the construction number at each compilation
+   **/
+  private void IncreaseBuild(ReadOnlyTargetRules Target) {
 
-		/**
-		 * Path to your project source folder
-		 **/
-		string PATH = Target.ProjectFile.Directory + "/Source/GsStarterPack/Systeme/";
+    /**
+     * Path to your project source folder
+     **/
+    string PATH = Target.ProjectFile.Directory + "/Source/GsStarterPack/System/";
 
-		/**
-		 * Header file to be modified
-		 */
-		const string GAME_BUILDING_FILE = "Build";
+    /**
+     * Header file to be modified
+     */
+    const string GAME_BUILDING_FILE = "Build";
 
-		/**
-		 * Text to replace in the build header file
-		 **/
-		const string LINE = "#define BUILD_NUMBER";
+    /**
+     * Text to replace in the build header file
+     **/
+    const string LINE = "#define BUILD_NUMBER";
 
-		/**
-		 * Encoding of the header file build
-		 **/
-		Encoding Encoding = Encoding.UTF8; // Encoding.UTF8
+    /**
+     * Encoding of the header file build
+     **/
+    Encoding Encoding = Encoding.UTF8;
 
-		/**
-		 * Path to your build header file
-		 **/
-		string FullFilePath = PATH + GAME_BUILDING_FILE + ".h";
+    /**
+     * Path to your build header file
+     **/
+    string FullFilePath = PATH + GAME_BUILDING_FILE + ".h";
 
-		FileStream DataStream = new FileStream(FullFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-		StreamReader File = new StreamReader(DataStream, Encoding, true, 128);
+    FileStream DataStream = new FileStream(FullFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+    StreamReader BuildFile = new StreamReader(DataStream, Encoding, true, 128);
 
-		List<String> OutputLines = new List<String>();
-		String SingleLine = string.Empty;
+    List<String> OutputLines = new List<String>();
+    String SingleLine = string.Empty;
 
-		/**
-		 * We determine if the file exists.
-		 **/
-		while ((SingleLine = File.ReadLine()) != null) {
+    /**
+     * We determine if the file exists.
+     **/
+    while ((SingleLine = BuildFile.ReadLine()) != null) {
 
-			if (SingleLine.Contains(LINE)) {
+      if (SingleLine.Contains(LINE)) {
 
-				string BuildNumberStr = SingleLine.Replace(LINE, "");
-				Int64 BuildNumber = Int64.Parse(BuildNumberStr);
-				BuildNumber++;
-				SingleLine = LINE + " " + (BuildNumber.ToString());
-			}
-			else throw new BuildException(
+        string BuildNumberStr = SingleLine.Replace(LINE, "");
+        Int64 BuildNumber = Int64.Parse(BuildNumberStr);
+        BuildNumber++;
+        SingleLine = LINE + " " + (BuildNumber.ToString());
+      }
+      else throw new BuildException(
 
-				"The [IncreaseBuild] Funtion failed to get " 
-				+ LINE 
-				+ ". Make sure they exist in the header file " 
-				+ GAME_BUILDING_FILE 
-				+ " !"
-				);
+        "The [IncreaseBuild] Funtion failed to get "
+        + LINE
+        + ". Make sure they exist in the header file "
+        + GAME_BUILDING_FILE
+        + " !"
+        );
 
-			OutputLines.Add(SingleLine);
-		}
+      OutputLines.Add(SingleLine);
+    }
 
-		File.WriteAllLines(FullFilePath, OutputLines.ToArray());
-	}
+    File.WriteAllLines(FullFilePath, OutputLines.ToArray());
+  }
 }
