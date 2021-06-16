@@ -1,14 +1,8 @@
-# Galactic-Shrine Starter Pack
+# &lt;Galactic-Shrine&gt; Starter Pack
 
 Pack de démarrage de projet sous UnrealEngine de la Galactic-Shrine (Sanctuaire-Galactique)
 
-## Project information/Information du projet
-
-Name : Gs Starter Pack (Galactic-Shrine Starter Pack)<br>
-Version: 1.0.0 Alpha<br>
-Engine use : Unreal Engine<br>
-Engine version: 5.0EA<br>
-Code Version: French<br>
+## Information du projet
 
 Nom : Gs Starter Pack (Pack de démarrage Galactic-Shrine)<br>
 Version : 1.0.0 Alpha<br>

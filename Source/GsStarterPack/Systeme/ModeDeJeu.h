@@ -12,5 +12,5 @@
 UCLASS()
 class GSSTARTERPACK_API AModeDeJeu : public AGameModeBase {
 
-	GENERATED_BODY()
+  GENERATED_BODY()
 };
