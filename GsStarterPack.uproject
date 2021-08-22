@@ -9,7 +9,8 @@
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
 			"AdditionalDependencies": [
-				"Engine"
+				"Engine",
+				"DeveloperSettings"
 			]
 		}
 	],
@@ -22,6 +23,10 @@
 				"Mac",
 				"Linux"
 			]
+		},
+		{
+			"Name": "ModelingToolsEditorMode",
+			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [
@@ -29,6 +34,7 @@
 		"LinuxAArch64",
 		"Lumin",
 		"Mac",
-		"Windows"
+		"Windows",
+		"IOS"
 	]
 }
