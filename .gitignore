@@ -103,6 +103,11 @@ Saved/Config/WindowsEditor/UnrealInsightsSettings.ini
 Saved/Config/WindowsEditor/VariantManagerContent.ini
 Saved/Config/WorldState/*
 Saved/Crashes/*
+Saved/Cooked/*
+Saved/Temp/*
+Saved/Shaders/*
+Saved/StagedBuilds/*
+Saved/Material*/*
 Saved/Logs/*
 Saved/webcache/*
 Saved/AutoScreenshot.png
