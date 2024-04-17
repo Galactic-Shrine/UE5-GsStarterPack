@@ -1,0 +1,22 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{1403CA63-41D3-612A-62CB-69B3D29E87E2}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "TP_GsStarterPack",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "ModelingToolsEditorMode",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		}
+	]
+}
