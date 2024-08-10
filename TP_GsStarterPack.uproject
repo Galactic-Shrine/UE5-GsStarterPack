@@ -1,13 +1,16 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{1403CA63-41D3-612A-62CB-69B3D29E87E2}",
+	"EngineAssociation": "",
 	"Category": "",
 	"Description": "",
 	"Modules": [
 		{
 			"Name": "TP_GsStarterPack",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
 		}
 	],
 	"Plugins": [
@@ -17,6 +20,18 @@
 			"TargetAllowList": [
 				"Editor"
 			]
+		},
+		{
+			"Name": "LiveUpdateForSlate",
+			"Enabled": true
+		},
+		{
+			"Name": "CodeEditor",
+			"Enabled": true
+		},
+		{
+			"Name": "CodeView",
+			"Enabled": true
 		}
 	]
 }
