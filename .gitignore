@@ -71,6 +71,15 @@ Saved/StagedBuilds/*
 Saved/Logs/*
 Saved/SourceControl/*
 Saved/UnrealBuildTool/*
+Saved/Crashes/*
+Saved/Cooked/*
+Saved/MaterialStats/*
+Saved/MaterialStatsDebug/*
+Saved/SaveGames/*
+Saved/ShaderDebugInfo/*
+Saved/Telemetry/*
+Saved/Temp/*
+Saved/Shaders/*
 Saved/webcache_*/*
 Saved/Config/WorldState/*
 Saved/Config/CrashReportClient/*
