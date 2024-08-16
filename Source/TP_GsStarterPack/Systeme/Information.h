@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "GeneralProjectSettings.h" // Nécessite le module EngineSettings
+#include "Components/TextBlock.h"
 #include "Information.generated.h"
 
 USTRUCT(BlueprintType)
@@ -104,13 +105,15 @@ class TP_GSSTARTERPACK_API UInformation : public UBlueprintFunctionLibrary {
 	GENERATED_BODY()
 
 public:
+  /**
+   * Le nom de la société (auteur, fournisseur) qui a créé le projet.
+   **/
   UFUNCTION(BlueprintPure, meta = (
     DisplayName = "Nom de la société",
     CompactNodeTitle = "NomDeLaSociete",
     Tooltip = "Permet d'obtenir le nom de la société (auteur, fournisseur) qui a créé le projet.",
     Category = "# GalacticShrine|InformationSystem|Éditeur"
     ))
-  /* Le nom de la société (auteur, fournisseur) qui a créé le projet.	*/
   static void NomDeLaSociete(FString& PNomDeLaSociete);
 
 public:
@@ -213,67 +216,74 @@ public:
   /* Nous obtenons le numéro de construction du projet */
   static void NumeroDeConstructionDuJeu(int& PConstruction);
 
-public:
+  /**
+   * L'identifiant unique du projet.
+   **/
   UFUNCTION(BlueprintPure, meta = (
     DisplayName = "Id du projet",
     CompactNodeTitle = "IdDuProjet",
     Tooltip = "Permet d'obtenir l'identifiant unique du projet.",
     Category = "# GalacticShrine|InformationSystem|À propos"
     ))
-  /* L'identifiant unique du projet. */
   static void IdDuProjet(FGuid& PIdDuProjet);
 
-public:
+  /**
+   * Le titre du projet tel qu'il est affiché sur la barre de titre de la fenêtre
+   * (peut inclure les jetons {GameName}, {PlatformArchitecture}, {BuildConfiguration} ou {RHIName}, qui seront remplacés par le texte spécifié)
+   **/
   UFUNCTION(BlueprintPure, meta = (
     DisplayName = "Titre affiche du projet",
     CompactNodeTitle = "TitreAfficheDuProjet",
     Tooltip = "Permet d'obtenir le titre du projet tel qu'il est affiché sur la barre de titre de la fenêtre (peut inclure les jetons {GameName}, {PlatformArchitecture}, {BuildConfiguration} ou {RHIName}, qui seront remplacés par le texte spécifié).",
     Category = "# GalacticShrine|InformationSystem|Affiché"
     ))
-  /* Le titre du projet tel qu'il est affiché sur la barre de titre de la fenêtre (peut inclure les jetons {GameName}, {PlatformArchitecture}, {BuildConfiguration} ou {RHIName}, qui seront remplacés par le texte spécifié) */
   static void TitreAfficheDuProjet(FText& PTitreAfficheDuProjet);
 
-public:
+  /**
+   * Données supplémentaires à afficher sur la barre de titre de la fenêtre dans les configurations de non-expédition
+   * (peuvent inclure les jetons {GameName}, {PlatformArchitecture}, {BuildConfiguration} ou {RHIName}, qui seront remplacés par le texte spécifié)
+   **/
   UFUNCTION(BlueprintPure, meta = (
     DisplayName = "Informations sur le titre du projet debug",
     CompactNodeTitle = "InformationsSurLeTitreDuProjetDebug",
     Tooltip = "Permet d'obtenir les onnées supplémentaires à afficher sur la barre de titre de la fenêtre dans les configurations de non-expédition (peuvent inclure les jetons {GameName}, {PlatformArchitecture}, {BuildConfiguration} ou {RHIName}, qui seront remplacés par le texte spécifié).",
     Category = "# GalacticShrine|InformationSystem|Affiché"
     ))
-  /* Données supplémentaires à afficher sur la barre de titre de la fenêtre dans les configurations de non-expédition (peuvent inclure les jetons {GameName}, {PlatformArchitecture}, {BuildConfiguration} ou {RHIName}, qui seront remplacés par le texte spécifié) */
   static void InformationsSurLeTitreDuProjetDebug(FText& PInformationsSurLeTitreDuProjetDebug);
 
-public:
+  /**
+   * La fenêtre du jeu doit-elle conserver son aspect ratio lorsqu'elle est redimensionnée par l'utilisateur.
+   **/
   UFUNCTION(BlueprintPure, meta = (
     DisplayName = "bool La fenêtre doit elle conserver son rapport aspect",
     CompactNodeTitle = "bLaFenetreDoitElleConserverSonRapportAspect",
     Tooltip = "Permet d'obtenir la fenêtre du jeu doit-elle conserver son aspect ratio lorsqu'elle est redimensionnée par l'utilisateur.",
     Category = "# GalacticShrine|InformationSystem|Paramètres"
     ))
-  /* La fenêtre du jeu doit-elle conserver son aspect ratio lorsqu'elle est redimensionnée par l'utilisateur. */
   static void bLaFenetreDoitElleConserverSonRapportAspect(bool& PbLaFenetreDoitElleConserverSonRapportAspect);
 
-public:
+  /**
+   * Le jeu devrait-il utiliser une fenêtre Ardoise sans bordure au lieu d'une fenêtre avec barre de titre et bordure du système
+   **/
   UFUNCTION(BlueprintPure, meta = (
     DisplayName = "bool Utiliser la fenêtre sans bordure",
     CompactNodeTitle = "bUtiliserLaFenetreSansBordure",
     Tooltip = "Permet d'obtenir si le jeu devrait-il utiliser une fenêtre Ardoise sans bordure au lieu d'une fenêtre avec barre de titre et bordure du système.",
     Category = "# GalacticShrine|InformationSystem|Paramètres"
     ))
-  /* Le jeu devrait-il utiliser une fenêtre Ardoise sans bordure au lieu d'une fenêtre avec barre de titre et bordure du système */
   static void bUtiliserLaFenetreSansBordure(bool& PbUtiliserLaFenetreSansBordure);
 
-public:
+  /**
+   * Si le jeu tente de démarrer en VR, indépendamment du fait que -vr ait été réglé sur la ligne de commande
+   **/
   UFUNCTION(BlueprintPure, meta = (
     DisplayName = "bool Démarrage en VR",
     CompactNodeTitle = "bDemarrageEnVR",
     Tooltip = "Permet d'obtenir si le jeu tente de démarrer en VR, indépendamment du fait que -vr ait été réglé sur la ligne de commande.",
     Category = "# GalacticShrine|InformationSystem|Paramètres"
     ))
-  /* Si le jeu tente de démarrer en VR, indépendamment du fait que -vr ait été réglé sur la ligne de commande */
   static void bDemarrageEnVR(bool& PbDemarrageEnVR);
 
-public:
   UFUNCTION(BlueprintPure, meta = (
     DisplayName = "bool Autoriser La fermeture",
     CompactNodeTitle = "bAutoriserLaFermeture",
@@ -282,7 +292,6 @@ public:
     ))
   static void bAutoriserLaFermeture(bool& PbAutoriserLaFermeture);
 
-public:
   UFUNCTION(BlueprintPure, meta = (
     DisplayName = "bool Permettre de maximiser",
     CompactNodeTitle = "bPermettreDeMaximiser",
@@ -291,7 +300,6 @@ public:
     ))
   static void bPermettreDeMaximiser(bool& PbPermettreDeMaximiser);
 
-public:
   UFUNCTION(BlueprintPure, meta = (
     DisplayName = "bool Permettre de reduire",
     CompactNodeTitle = "bPermettreDeReduire",
@@ -300,7 +308,6 @@ public:
     ))
   static void bPermettreDeReduire(bool& PbPermettreDeReduire);
 
-public:
   UFUNCTION(BlueprintPure, meta = (
     DisplayName = "bool Autoriser le redimensionnement de la fenêtre",
     CompactNodeTitle = "bAutoriserLeRedimensionnementDeLaFenetres",
@@ -309,13 +316,24 @@ public:
     ))
   static void bAutoriserLeRedimensionnementDeLaFenetres(bool& PbAutoriserLeRedimensionnementDeLaFenetres);
 
-public:
+  /**
+   * Affiche la version du jeu et son numéro de construction
+   **/
+  UFUNCTION(BlueprintCallable, meta = (
+    DisplayName = "Afficher La Version",
+    Tooltip = "Affiche la version du jeu et son numéro de construction.",
+    Category = "# GalacticShrine|InformationSystem|Affiché"
+    ))
+  static void AfficherLaVersion(UTextBlock* Target, bool AfficherLeNumeroDeConstruction, const FString& VersionPrefixe, const FString& VersionDuJeu, const FString& VersionSuffixe);
+
+  /**
+   * Nous obtenons les paramètres du projet
+   **/
   UFUNCTION(BlueprintCallable, meta = (
     DisplayName = "Obtenir les paramètres du projet",
     Tooltip = "Permet d'obtenir les paramètres du projet",
     Category = "# GalacticShrine|InformationSystem"
     ))
-  /* Nous obtenons les paramètres du projet */
   static void ObtenirLesParametresDuProjet(FParametresDeProjet& Parametres);
 
 };

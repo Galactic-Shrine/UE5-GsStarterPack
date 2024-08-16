@@ -16,6 +16,9 @@ class TP_GSSTARTERPACK_API UInstanceDeJeuParDefaut : public UGameInstance {
   GENERATED_BODY()
 
 public:
+
+  virtual void Init() override;
+
   /**
    * Indique si c'est le premier lancement de l'application.
    * Utilisée pour déterminer si la vidéo d'introduction doit être imposée sans possibilité de saut.
