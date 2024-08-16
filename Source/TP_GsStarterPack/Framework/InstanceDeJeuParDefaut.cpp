@@ -4,6 +4,12 @@
 #include "../Systeme/SauvegardeParametres.h"
 #include "Kismet/GameplayStatics.h"
 
+void UInstanceDeJeuParDefaut::Init() {
+
+  Super::Init();
+  //VerifierPremierLancement(); //Décommenter pour lancer la vérification automatique.
+}
+
 /**
  * Implémentation de la fonction VerifierPremierLancement.
  * Cette fonction vérifie si l'application a déjà été lancée en essayant de charger une sauvegarde existante.
